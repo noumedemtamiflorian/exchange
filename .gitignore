@@ -1,2 +1,3 @@
 /env
-/exchange/exchange/__pycache__
+/exchange/*/__pycache__/
+exchange/*/migrations/__pycache__

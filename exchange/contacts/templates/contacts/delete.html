@@ -1,0 +1,8 @@
+<h1> Suppression </h1>
+
+<form method="post">
+    {% csrf_token %}
+    <p>Voulez vous supprimer le numero de  {{ object }}</p>
+    {{ form.as_p}}
+    <button>Delete</button>
+</form>
