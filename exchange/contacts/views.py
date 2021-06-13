@@ -1,7 +1,14 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import (
+    CreateView, UpdateView, ListView
+)
 from .models import Contact
 # Create your views here.
+
+
+class ContactListView(ListView):
+    model = Contact
+    template_name = "contacts/index.html"
 
 
 class ContactCreateView(CreateView):
