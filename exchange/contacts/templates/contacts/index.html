@@ -1,7 +1,13 @@
 <h1>Liste de contacts</h1>
-
+<form method="GET" action="{% url 'contacts:search' %}" >
+    {% csrf_token %}
+    <input type="text" name="query" placeholder="Search">
+    <button>Search</button>
+</form>
+<p><a href="{% url 'contacts:create' %}">Creer un contact</a></p>
 <ul>
     {% for contact in object_list %}
-    <li>{{ contact }} : {{ contact.number }}</li>
+    <li>{{ contact }} : {{ contact.number }} - <a href="{% url 'contacts:edit' contact.slug %}">Editer</a> -- <a
+            href="{% url 'contacts:delete' contact.slug %}">Del</a> </li>
     {% endfor %}
 </ul>

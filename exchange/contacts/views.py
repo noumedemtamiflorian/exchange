@@ -28,3 +28,19 @@ class ContactDeleteView(DeleteView):
     template_name ="contacts/delete.html"
     success_url = reverse_lazy('contacts:index')
 
+
+def search(request):
+    query = request.GET.get('query')
+    if not query:
+        Contacts = Contact.objects.all()
+    else:
+        # title contains the query is and query is not sensitive to case.
+        Contacts = Contact.objects.filter(name__icontains=query)
+    if not Contacts.exists():
+        Contacts = Contact.objects.filter(number__icontains=query)
+    title = "Résultats pour la requête %s"%query
+    context = {
+        'Contacts': Contacts,
+        'title': title
+    }
+    return render(request, 'contacts/search.html', context)

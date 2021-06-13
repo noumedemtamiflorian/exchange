@@ -1,0 +1,6 @@
+<h1>{{ title }}</h1>
+{% for contact in Contacts %}
+<p>{{ contact }} -- {{ contact.number }}</p>
+{% empty %}
+Aucun
+{% endfor %}
