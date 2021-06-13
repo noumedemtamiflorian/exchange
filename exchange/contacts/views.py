@@ -1,6 +1,7 @@
+from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views.generic import (
-    CreateView, UpdateView, ListView
+    CreateView, UpdateView, ListView,DeleteView
 )
 from .models import Contact
 # Create your views here.
@@ -21,3 +22,9 @@ class ContactUpdateView(UpdateView):
     model = Contact
     template_name = "contacts/update.html"
     fields = ['name', 'number']
+
+class ContactDeleteView(DeleteView):
+    model = Contact
+    template_name ="contacts/delete.html"
+    success_url = reverse_lazy('contacts:index')
+
